@@ -1,0 +1,45 @@
+.mybutton {
+    background-color: transparent;
+    border: none;
+    width: 20%;
+}
+
+.focus-card {
+    background-color: lightsalmon;
+    border-radius: 2rem;
+    max-width: 50%;
+}
+
+.btn {
+    font-size: 1.3rem;
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: 400;
+}
+
+.btn:hover {
+    background-color: white;
+    font-weight: 600;
+    border-color: transparent;
+}
+
+.btn:focus {
+    background-color: white;
+    font-weight: 600;
+    color: lightcoral;
+    outline: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+
+.timer {
+    font-size: 7rem;
+    font-weight: 500;
+    color: white;
+}
+
+.counter-pomodoro{
+    font-size: 1.3rem;
+    color: rgba(240, 240, 240, 0.658);
+}
