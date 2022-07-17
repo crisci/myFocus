@@ -29,12 +29,12 @@ function Focus(props) {
         setCounter(counter + 1);
         console.log(counter);
         if (counter % 2 === 1) {
-            setTimer({color: "rgb(247, 80, 80)", timer: pomodoro * 60});
+            setTimer({color: "#FF6B6B", timer: pomodoro * 60});
         } else {
             if (counter % 6 === 0 && counter !== 0) {
-                setTimer({color: "rgb(43, 177, 255)", timer: longBreak*60})
+                setTimer({color: "#4D96FF", timer: longBreak*60})
             } else {
-                setTimer({color: "rgb(88, 255, 171)", timer: shortBreak*60});
+                setTimer({color: "#6BCB77", timer: shortBreak*60});
             }
         }
     }
@@ -54,15 +54,15 @@ function Focus(props) {
     const handleClick = (type) => {
         switch (type) {
             case shortBreak:
-                setTimer({color: "rgb(88, 255, 171)", timer: type*60})
+                setTimer({color: "#6BCB77", timer: type*60})
                 break;
                 
             case longBreak:
-                setTimer({color: "rgb(43, 177, 255)", timer: type*60})
+                setTimer({color: "#4D96FF", timer: type*60})
                 break;
             
             default:
-                setTimer({color: "rgb(247, 80, 80)", timer: type*60});
+                setTimer({color: "#FF6B6B", timer: type*60});
                 break;
                 
                 }
