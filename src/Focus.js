@@ -3,6 +3,8 @@ import { Button, Col, Container, Row, ToggleButton } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
 
+let root = document.documentElement;
+
 function Focus(props) {
     const [pomodoro, setPomodoro] = useState(25); // eslint-disable-line no-unused-vars
     const [shortBreak, setShortBreak] = useState(5); // eslint-disable-line no-unused-vars
@@ -31,11 +33,14 @@ function Focus(props) {
         console.log(counter);
         if (counter % 2 === 1) {
             setTimer({color: "#FF6B6B", timer: pomodoro * 60, type: "pomodoro"});
+            root.style.setProperty('--background-color', "#FF6B6B");
         } else {
             if (counter % 6 === 0 && counter !== 0) {
                 setTimer({color: "#4D96FF", timer: longBreak*60, type: "longBreak"})
+                root.style.setProperty('--background-color', "#4D96FF");
             } else {
                 setTimer({color: "#6BCB77", timer: shortBreak*60, type: "shortBreak"});
+                root.style.setProperty('--background-color', "#6BCB77");
             }
         }
     }
@@ -55,15 +60,18 @@ function Focus(props) {
     const handleClick = (type) => {
         switch (type) {
             case shortBreak:
-                setTimer({color: "#6BCB77", timer: type*60, type:"shortBreak" })
+                setTimer({color: "#6BCB77", timer: type*60, type:"shortBreak" });
+                root.style.setProperty('--background-color', "#6BCB77");
                 break;
                 
             case longBreak:
-                setTimer({color: "#4D96FF", timer: type*60, type: "pomodoro"})
+                setTimer({color: "#4D96FF", timer: type*60, type: "pomodoro"});
+                root.style.setProperty('--background-color', "#4D96FF");
                 break;
             
             default:
                 setTimer({color: "#FF6B6B", timer: type*60, type: "longBreak"});
+                root.style.setProperty('--background-color', "#FF6B6B");
                 break;
                 
                 }
@@ -71,19 +79,20 @@ function Focus(props) {
     };
 
     return (
-        <Row className="vh-100 m-0">
+        <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav></Nav>
             <Col className="m-auto text-center">
-                <Container className="py-5 focus-card" style={{backgroundColor: timer.color}}>
+                <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
-                        <ToggleButton className="mybutton" onClick={() => handleClick(pomodoro)} > Pomodoro </ToggleButton>
+                        {/* TODO: Always selected, change type of buttons */}
+                        <ToggleButton className="mybutton" onClick={() => handleClick(pomodoro)}> Pomodoro </ToggleButton>
                         <ToggleButton className="mybutton" onClick={() => handleClick(shortBreak)}> Short Break </ToggleButton>
                         <ToggleButton className="mybutton" onClick={() => handleClick(longBreak)}> Long Break </ToggleButton>
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
                     </Container>
-                    <Button onClick={startOrStop} >{status ? "Stop" : "Start"}</Button>
+                    <Button  className="start-btn" onClick={startOrStop} >{status ? "Stop" : "Start"}</Button>
                 </Container>
             </Col>
         </Row>

@@ -6,7 +6,7 @@ import { BiUserCircle } from "react-icons/bi";
 function Nav(props) {
 
     return (
-        <Navbar bg="primary" variant="dark" className="navbar navbar-dark bg-primary fixed-top" style={{backgroundColor: "transparent"}}>
+        <Navbar variant="dark" className="navbar navbar-dark fixed-top" style={{backgroundColor: "transparent !important"}}>
             <Container fluid style={{ paddingLeft: "1.2rem", paddingRight: "1.2rem" }}>
                 <Navbar.Brand style={{fontWeight:"500"}}>
                     myFocus

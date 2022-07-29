@@ -1,3 +1,7 @@
+:root {
+    --background-color: #FF6B6B;
+}
+
 .mybutton {
     background-color: transparent;
     border: none;
@@ -5,28 +9,35 @@
 }
 
 .focus-card {
-    background-color: lightsalmon;
+    background-color: rgba(230, 230, 230, 0.2);
     border-radius: 2rem;
-    max-width: 50%;
+    max-width: 40%;
 }
 
 .btn {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     background-color: transparent;
     border-color: transparent;
     font-weight: 400;
+    max-width: 50%;
+}
+
+.start-btn {
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .btn:hover {
     background-color: white;
     font-weight: 600;
     border-color: transparent;
+    color: var(--background-color); /*TODO: change value with js*/
 }
 
 .btn:focus {
     background-color: white;
     font-weight: 600;
-    color: lightcoral;
+    color: var(--background-color); /*TODO: change value with js*/
     outline: none;
     box-shadow: none;
     border-color: transparent;
