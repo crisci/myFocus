@@ -5,6 +5,7 @@ import Nav from "./Navbar";
 
 let root = document.documentElement;
 
+
 function Focus(props) {
     const [pomodoro, setPomodoro] = useState(25); // eslint-disable-line no-unused-vars
     const [shortBreak, setShortBreak] = useState(5); // eslint-disable-line no-unused-vars
@@ -65,12 +66,12 @@ function Focus(props) {
                 break;
                 
             case longBreak:
-                setTimer({color: "#4D96FF", timer: type*60, type: "pomodoro"});
+                setTimer({color: "#4D96FF", timer: type*60, type: "longBreak"});
                 root.style.setProperty('--background-color', "#4D96FF");
                 break;
             
             default:
-                setTimer({color: "#FF6B6B", timer: type*60, type: "longBreak"});
+                setTimer({color: "#FF6B6B", timer: type*60, type: "pomodoro"});
                 root.style.setProperty('--background-color', "#FF6B6B");
                 break;
                 
@@ -78,21 +79,27 @@ function Focus(props) {
         setStatus(false);
     };
 
+    function timerType(type) {
+        if (type === timer.type)
+            return true;
+        return false;
+    }
+
     return (
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav></Nav>
-            <Col className="m-auto text-center">
+            <Col className="m-auto text-center vh-50">
                 <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
-                        {/* TODO: Always selected, change type of buttons */}
-                        <ToggleButton className="mybutton" onClick={() => handleClick(pomodoro)}> Pomodoro </ToggleButton>
-                        <ToggleButton className="mybutton" onClick={() => handleClick(shortBreak)}> Short Break </ToggleButton>
-                        <ToggleButton className="mybutton" onClick={() => handleClick(longBreak)}> Long Break </ToggleButton>
+                        {/* TODO: Always selected, change type of buttons  Radius*/}
+                        <ToggleButton className={`mybutton ${timerType("pomodoro") ? "checked" : ""}`} onClick={() => handleClick(pomodoro)} checked={timerType("pomodoro") ? true : false}> Pomodoro </ToggleButton>
+                        <ToggleButton className={`mybutton ${timerType("shortBreak") ? "checked" : ""}`}  onClick={() => handleClick(shortBreak)} checked={timerType("shortBreak") ? true : false}> Short Break </ToggleButton>
+                        <ToggleButton className={`mybutton ${timerType("longBreak") ? "checked" : ""}`}  onClick={() => handleClick(longBreak)} checked={timerType("longBreak") ? true : false}> Long Break </ToggleButton>
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
                     </Container>
-                    <Button  className="start-btn" onClick={startOrStop} >{status ? "Stop" : "Start"}</Button>
+                    <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
             </Col>
         </Row>

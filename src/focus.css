@@ -1,56 +1,88 @@
 :root {
-    --background-color: #FF6B6B;
+  --background-color: #ff6b6b;
 }
 
 .mybutton {
-    background-color: transparent;
-    border: none;
-    width: 20%;
+  background-color: transparent;
+  border: none;
+  width: 20%;
 }
 
 .focus-card {
-    background-color: rgba(230, 230, 230, 0.2);
-    border-radius: 2rem;
-    max-width: 40%;
+  background-color: rgba(230, 230, 230, 0.2);
+  border-radius: 2rem;
+  max-width: 40%;
+  height: 350px;
 }
 
 .btn {
-    font-size: 1.25rem;
-    background-color: transparent;
-    border-color: transparent;
-    font-weight: 400;
-    max-width: 50%;
+  font-size: 1.25rem;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: 400;
+  max-width: 50%;
 }
 
 .start-btn {
-    font-size: 1.8rem;
-    font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 10px;
 }
 
 .btn:hover {
-    background-color: white;
-    font-weight: 600;
-    border-color: transparent;
-    color: var(--background-color); /*TODO: change value with js*/
+  background-color: white;
+  font-weight: 600;
+  border-color: transparent;
+  color: var(--background-color); /*TODO: change value with js*/
 }
 
 .btn:focus {
-    background-color: white;
-    font-weight: 600;
-    color: var(--background-color); /*TODO: change value with js*/
-    outline: none;
-    box-shadow: none;
-    border-color: transparent;
+  background-color: white;
+  font-weight: 600;
+  color: var(--background-color); /*TODO: change value with js*/
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
+.checked {
+  background-color: white;
+  font-weight: 600;
+  border-color: transparent;
+  color: var(--background-color); /*TODO: change value with js*/
+}
 
 .timer {
-    font-size: 7rem;
-    font-weight: 500;
-    color: white;
+  font-size: 7rem;
+  font-weight: 500;
+  color: white;
 }
 
-.counter-pomodoro{
-    font-size: 1.3rem;
-    color: rgba(240, 240, 240, 0.658);
+.counter-pomodoro {
+  font-size: 1.3rem;
+  color: rgba(240, 240, 240, 0.658);
+}
+
+.start {
+  background-color: white;
+  font-weight: 600;
+  border-color: transparent;
+  color: var(--background-color); /*TODO: change value with js*/
+  box-shadow: inset 0px -10px 0px 0px #ebebeb;
+  width: 30%;
+  height: 3.4rem;
+  -webkit-box-shadow: inset 0px -8px 0px 0px #ebebeb;
+  -moz-box-shadow: inset 0px -8px 0px 0px #ebebeb;
+  -o-box-shadow: inset 0px -8px 0px 0px #ebebeb;
+}
+
+.stop {
+  background-color: white;
+  font-weight: 600;
+  border-color: transparent;
+  color: var(--background-color); /*TODO: change value with js*/
+  width: 30%;
+  height: 3rem;
+  margin: auto;
+  transform: translateY(8px);
 }
