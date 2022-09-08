@@ -1,5 +1,5 @@
 import "./focus.css";
-import { Button, Col, Container, Row, ToggleButton } from "react-bootstrap";
+import { Col, Container, Row, ToggleButton } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
 
@@ -28,6 +28,12 @@ function Focus(props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
+
+    function resetTimers(newPomodoro, newShortBreak, newLongBreak) {
+        setPomodoro(newPomodoro);
+        setShortBreak(newShortBreak);
+        setLongBreak(newLongBreak);
+    }
 
     function switchTimer() {
         setCounter(counter + 1);
@@ -87,7 +93,7 @@ function Focus(props) {
 
     return (
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
-            <Nav></Nav>
+            <Nav pomodoro={pomodoro} shortBreak={shortBreak} longBreak={longBreak} resetTimers={resetTimers} />
             <Col className="m-auto text-center vh-50">
                 <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
