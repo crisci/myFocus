@@ -10,7 +10,7 @@ function Focus(props) {
     const [pomodoro, setPomodoro] = useState(25); // eslint-disable-line no-unused-vars
     const [shortBreak, setShortBreak] = useState(5); // eslint-disable-line no-unused-vars
     const [longBreak, setLongBreak] = useState(10); // eslint-disable-line no-unused-vars
-    const [timer, setTimer] = useState({color: "#FF6B6B", timer: pomodoro * 60, type: "pomodoro"}); //seconds
+    const [timer, setTimer] = useState({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"}); //seconds
     const [counter, setCounter] = useState(0);
     const [status, setStatus] = useState(false); //false=stopped true=on going
     const [timerInterval, setTimerInterval] = useState();
@@ -33,8 +33,8 @@ function Focus(props) {
         setCounter(counter + 1);
         console.log(counter);
         if (counter % 2 === 1) {
-            setTimer({color: "#FF6B6B", timer: pomodoro * 60, type: "pomodoro"});
-            root.style.setProperty('--background-color', "#FF6B6B");
+            setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
+            root.style.setProperty('--background-color', "#DF5353");
         } else {
             if (counter % 6 === 0 && counter !== 0) {
                 setTimer({color: "#4D96FF", timer: longBreak*60, type: "longBreak"})
@@ -71,8 +71,8 @@ function Focus(props) {
                 break;
             
             default:
-                setTimer({color: "#FF6B6B", timer: type*60, type: "pomodoro"});
-                root.style.setProperty('--background-color', "#FF6B6B");
+                setTimer({color: "#DF5353", timer: type*60, type: "pomodoro"});
+                root.style.setProperty('--background-color', "#DF5353");
                 break;
                 
                 }
