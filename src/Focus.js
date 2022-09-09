@@ -1,5 +1,5 @@
 import "./focus.css";
-import { Col, Container, Row, ToggleButton } from "react-bootstrap";
+import { Badge, Col, Container, Row, ToggleButton } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
 
@@ -107,6 +107,7 @@ function Focus(props) {
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
+                        <Badge>{Math.floor((counter+1)/2)}</Badge>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>

@@ -73,6 +73,11 @@
   color: white;
 }
 
+.badge {
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.322)!important;
+}
+
 .counter-pomodoro {
   font-size: 1.3rem;
   color: rgba(240, 240, 240, 0.658);
