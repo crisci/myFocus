@@ -3,12 +3,6 @@
 <img src = "img/pomodoro.png" width=49%/> <img src = "img/shortBreak.png" width=49%/>
 <img src = "img/longBreak.png" width=49%/> <img src = "img/settings.png" width=49%/>
 
-![Screenshot](/img/pomodoro.png)
-![Screenshot](/img/shortBreak.png)
-![Screenshot](/img/longBreak.png)
-![Screenshot](/img/settings.png)
-
-
 ## Available Scripts
 
 In the project directory, you can run:
