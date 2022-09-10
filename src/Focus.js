@@ -14,7 +14,6 @@ function Focus(props) {
     const [counter, setCounter] = useState(1);
     const [status, setStatus] = useState(false); //false=stopped true=on going
     const [timerInterval, setTimerInterval] = useState();
-    const [ready, setReady] = useState(false);
 
     useEffect(() => {
         setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
@@ -36,19 +35,15 @@ function Focus(props) {
 
     useEffect(() => {
         if(timer.timer === 0) {
-            setCounter(counter + 1);
-            setReady(true);
+            setCounter(counter + 1); //asyncronous so once that counter is updated so the timer can switch useEffect(() => {...}, [counter])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timer.timer]);
 
     useEffect(() => {
-        if(ready) {
-            switchTimer();
-            setReady(false);
-        }
+        switchTimer();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ready]);
+    }, [counter]);
 
     function resetTimers(newPomodoro, newShortBreak, newLongBreak) {
         setPomodoro(newPomodoro);
@@ -80,6 +75,7 @@ function Focus(props) {
         setStatus(!status);
     }
 
+    //TODO: switch timer update counter click
     const handleClick = (type) => {
         switch (type.desc) {
             case "shortBreak":
