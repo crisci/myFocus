@@ -1,7 +1,7 @@
 {
   "name": "myfocus",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/myfocus",
+  "homepage": "https://gitname.github.io/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
