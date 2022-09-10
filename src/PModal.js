@@ -14,12 +14,6 @@ function PModal(props) {
     props.handleClose();
   }
 
-  const modalClose = () => {
-    setNewPomodoro(props.pomodoro);
-    setNewShortBreak(props.shortBreak);
-    setNewLongBreak(props.longBreak);
-    props.handleClose();
-  }
 
   return (
     <Modal show={props.show} onHide={props.handleClose}>

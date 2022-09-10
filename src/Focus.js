@@ -11,9 +11,10 @@ function Focus(props) {
     const [shortBreak, setShortBreak] = useState(5); // eslint-disable-line no-unused-vars
     const [longBreak, setLongBreak] = useState(10); // eslint-disable-line no-unused-vars
     const [timer, setTimer] = useState({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"}); //seconds
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(1);
     const [status, setStatus] = useState(false); //false=stopped true=on going
     const [timerInterval, setTimerInterval] = useState();
+    const [ready, setReady] = useState(false);
 
     useEffect(() => {
         setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
@@ -33,6 +34,22 @@ function Focus(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
+    useEffect(() => {
+        if(timer.timer === 0) {
+            setCounter(counter + 1);
+            setReady(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [timer.timer]);
+
+    useEffect(() => {
+        if(ready) {
+            switchTimer();
+            setReady(false);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ready]);
+
     function resetTimers(newPomodoro, newShortBreak, newLongBreak) {
         setPomodoro(newPomodoro);
         setShortBreak(newShortBreak);
@@ -40,12 +57,11 @@ function Focus(props) {
     }
 
     function switchTimer() {
-        setCounter(counter + 1);
         if (counter % 2 === 1) {
             setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
             root.style.setProperty('--background-color', "#DF5353");
         } else {
-            if (counter % 6 === 0 && counter !== 0) {
+            if (counter % 8 === 0 && counter !== 0) {
                 setTimer({color: "#4D96FF", timer: longBreak*60, type: "longBreak"})
                 root.style.setProperty('--background-color', "#4D96FF");
             } else {
@@ -56,9 +72,6 @@ function Focus(props) {
     }
 
     function composeTimer() {
-        if (timer.timer === 0) {
-            switchTimer();
-        }
         const seconds = timer.timer % 60 < 10 ? "0" + (timer.timer% 60) : timer.timer % 60;
         return Math.floor(timer.timer / 60) + ":" + seconds;
     }
@@ -107,7 +120,7 @@ function Focus(props) {
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
-                        <Badge>{Math.floor((counter+1)/2)}</Badge>
+                        <Badge>{Math.floor((counter)/2)}</Badge>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
