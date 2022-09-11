@@ -14,7 +14,7 @@ function App() {
 function MainApp() {
   return(
     <Routes>
-        <Route path='/' element={<Focus/>}/>
+        <Route path='/myfocus' element={<Focus/>}/>
     </Routes>
   );
 }
