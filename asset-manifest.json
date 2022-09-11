@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.39d8bfa2.css",
-    "main.js": "/react-gh-pages/static/js/main.44d7190a.js",
-    "static/js/787.0e9a0273.chunk.js": "/react-gh-pages/static/js/787.0e9a0273.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.39d8bfa2.css.map": "/react-gh-pages/static/css/main.39d8bfa2.css.map",
-    "main.44d7190a.js.map": "/react-gh-pages/static/js/main.44d7190a.js.map",
-    "787.0e9a0273.chunk.js.map": "/react-gh-pages/static/js/787.0e9a0273.chunk.js.map"
+    "main.css": "/myfocus/static/css/main.39d8bfa2.css",
+    "main.js": "/myfocus/static/js/main.d168dc04.js",
+    "static/js/787.0e9a0273.chunk.js": "/myfocus/static/js/787.0e9a0273.chunk.js",
+    "index.html": "/myfocus/index.html",
+    "main.39d8bfa2.css.map": "/myfocus/static/css/main.39d8bfa2.css.map",
+    "main.d168dc04.js.map": "/myfocus/static/js/main.d168dc04.js.map",
+    "787.0e9a0273.chunk.js.map": "/myfocus/static/js/787.0e9a0273.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.39d8bfa2.css",
-    "static/js/main.44d7190a.js"
+    "static/js/main.d168dc04.js"
   ]
 }
