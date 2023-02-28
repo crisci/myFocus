@@ -1,7 +1,8 @@
 import "./focus.css";
-import { Badge, Col, Container, Row, ToggleButton } from "react-bootstrap";
+import { Badge, Col, Container, Row, ToggleButton, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
+import ResetModal from "./ResetModal";
 
 let root = document.documentElement;
 
@@ -14,6 +15,7 @@ function Focus(props) {
     const [counter, setCounter] = useState(1);
     const [status, setStatus] = useState(false); //false=stopped true=on going
     const [timerInterval, setTimerInterval] = useState();
+    const [alertResetTimer, setAlertResetTimer] = useState({state: false, choise: false});
 
     useEffect(() => {
         setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
@@ -32,6 +34,14 @@ function Focus(props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
+
+    useEffect(() => {
+        if(alertResetTimer.choise) {
+            //TODO: reset timer and counter
+            setAlertResetTimer({state: false, choise: false})
+        }
+
+    }, [alertResetTimer.choise])
 
     useEffect(() => {
         if(timer.timer === 0) {
@@ -75,6 +85,11 @@ function Focus(props) {
         setStatus(!status);
     }
 
+
+    function showModal() {
+        setAlertResetTimer({state:true, choise: false});
+    }
+
     //TODO: switch timer update counter click
     const handleClick = (type) => {
         switch (type.desc) {
@@ -106,6 +121,7 @@ function Focus(props) {
     return (
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav pomodoro={pomodoro} shortBreak={shortBreak} longBreak={longBreak} resetTimers={resetTimers} />
+            {alertResetTimer.state ? <ResetModal alertResetTimer={alertResetTimer} setAlertResetTimer={setAlertResetTimer}></ResetModal> : <></>}
             <Col className="m-auto text-center vh-50">
                 <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
@@ -116,7 +132,7 @@ function Focus(props) {
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
-                        <Badge>{Math.floor((counter)/2)}</Badge>
+                        <Button class='badge-btn' onClick={showModal}><Badge>{Math.floor((counter)/2)}</Badge></Button>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
