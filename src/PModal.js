@@ -38,7 +38,7 @@ function PModal(props) {
             </Col>
           </Row>
           <Row className="m-auto pt-3 justify-content-end">
-            <Button type="submit" className="rounded-pill modal-btn mx-2 w-25" onClick={handleSubmit}>
+            <Button type="submit" variant="success" className="rounded-pill modal-btn mx-2 w-25" onClick={handleSubmit}>
               Save
             </Button>
           </Row>

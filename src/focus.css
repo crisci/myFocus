@@ -55,7 +55,7 @@
 }
 
 .badge-btn{
-  background-color: transparent;
+  background-color: transparent!important;
   border: none;
   display: flex;
 
@@ -79,6 +79,7 @@
 .timer {
   font-size: 7rem;
   font-weight: 500;
+  display: block ruby;
   color: white;
 }
 

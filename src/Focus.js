@@ -132,7 +132,7 @@ function Focus(props) {
                     </Container>
                     <Container className="timer">
                         {composeTimer()}
-                        <Button class='badge-btn' onClick={showModal}><Badge>{Math.floor((counter)/2)}</Badge></Button>
+                        <Button className='badge-btn mt-5' onClick={showModal}><Badge>{Math.floor((counter)/2)}</Badge></Button>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
