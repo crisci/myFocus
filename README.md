@@ -1,5 +1,5 @@
 # myFocus
-
+ 
 <img src = "img/pomodoro.png" width=49%/> <img src = "img/shortBreak.png" width=49%/>
 <img src = "img/longBreak.png" width=49%/> <img src = "img/settings.png" width=49%/>
 
