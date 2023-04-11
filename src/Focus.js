@@ -122,7 +122,7 @@ function Focus(props) {
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav pomodoro={pomodoro} shortBreak={shortBreak} longBreak={longBreak} resetTimers={resetTimers} />
             {alertResetTimer.state ? <ResetModal alertResetTimer={alertResetTimer} setAlertResetTimer={setAlertResetTimer}></ResetModal> : <></>}
-            <Col className="m-auto text-center vh-50">
+            <Col className="m-auto text-center">
                 <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
                         {/* TODO: Always selected, change type of buttons  Radius*/}
@@ -130,9 +130,9 @@ function Focus(props) {
                         <ToggleButton className={`mybutton ${timerType("shortBreak") ? "checked" : ""}`}  onClick={() => handleClick({minutes: shortBreak, desc: "shortBreak"})}> Short Break </ToggleButton>
                         <ToggleButton className={`mybutton ${timerType("longBreak") ? "checked" : ""}`}  onClick={() => handleClick({minutes: longBreak, desc: "longBreak"})}> Long Break </ToggleButton>
                     </Container>
-                    <Container className="timer">
+                    <Container className="timer d-flex justify-content-center">
                         {composeTimer()}
-                        <Button className='badge-btn mt-5' onClick={showModal}><Badge>{Math.floor((counter)/2)}</Badge></Button>
+                        <Button className='badge-btn mt-4 mb-auto' onClick={showModal}><Badge className="mt-5">{Math.floor((counter)/2)}</Badge></Button>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>

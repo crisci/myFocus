@@ -13,7 +13,7 @@
 .focus-card {
   background-color: rgba(236, 233, 233, 0.103);
   border-radius: 2rem;
-  max-width: 40%;
+  width: 40%;
   height: 380px;
 }
 
@@ -77,7 +77,7 @@
 }
 
 .timer {
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: 500;
   display: block ruby;
   color: white;
@@ -116,3 +116,4 @@
   margin: auto;
   transform: translateY(8px);
 }
+
