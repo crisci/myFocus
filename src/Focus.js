@@ -121,7 +121,8 @@ function Focus(props) {
     return (
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav pomodoro={pomodoro} shortBreak={shortBreak} longBreak={longBreak} resetTimers={resetTimers} />
-            {alertResetTimer.state ? <ResetModal alertResetTimer={alertResetTimer} setAlertResetTimer={setAlertResetTimer}></ResetModal> : <></>}
+            //TODO: Reset modal
+            {/*{alertResetTimer.state ? <ResetModal alertResetTimer={alertResetTimer} setAlertResetTimer={setAlertResetTimer}></ResetModal> : <></>}*/}
             <Col className="m-auto text-center">
                 <Container className="py-5 focus-card">
                     <Container className="d-flex justify-content-evenly buttons">
