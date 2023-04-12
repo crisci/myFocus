@@ -16,6 +16,7 @@ function Focus(props) {
     const [status, setStatus] = useState(false); //false=stopped true=on going
     const [timerInterval, setTimerInterval] = useState();
     const [alertResetTimer, setAlertResetTimer] = useState({state: false, choise: false});
+    const [pomoCounter, setPomoCounter] = useState(0);
 
     useEffect(() => {
         setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
@@ -45,13 +46,16 @@ function Focus(props) {
 
     useEffect(() => {
         if(timer.timer === 0) {
-            setCounter(counter + 1); //asyncronous so once that counter is updated so the timer can switch useEffect(() => {...}, [counter])
+            if(timer.type === "pomodoro") setPomoCounter(pomoCounter + 1)
+            setCounter(counter+1); //asyncronous so once that counter is updated so the timer can switch useEffect(() => {...}, [counter])
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timer.timer]);
 
     useEffect(() => {
-        switchTimer();
+        if(counter !== 0) {
+            switchTimer();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [counter]);
 
@@ -69,6 +73,7 @@ function Focus(props) {
             if (counter % 8 === 0 && counter !== 0) {
                 setTimer({color: "#4D96FF", timer: longBreak*60, type: "longBreak"})
                 root.style.setProperty('--background-color', "#4D96FF");
+                setCounter(0)
             } else {
                 setTimer({color: "#6BCB77", timer: shortBreak*60, type: "shortBreak"});
                 root.style.setProperty('--background-color', "#6BCB77");
@@ -96,16 +101,19 @@ function Focus(props) {
             case "shortBreak":
                 setTimer({color: "#6BCB77", timer: type.minutes*60, type: type.desc });
                 root.style.setProperty('--background-color', "#6BCB77");
+                if(status) setCounter(pomoCounter*2)
                 break;
                 
             case "longBreak":
                 setTimer({color: "#4D96FF", timer: type.minutes*60, type: type.desc});
                 root.style.setProperty('--background-color', "#4D96FF");
+                if(status) setCounter(pomoCounter*2)
                 break;
             
             default:
                 setTimer({color: "#DF5353", timer: type.minutes*60, type: type.desc});
                 root.style.setProperty('--background-color', "#DF5353");
+                if(status && timer.type !== "pomodoro") setCounter(pomoCounter*2 + 1)
                 break;
                 
                 }
@@ -121,7 +129,7 @@ function Focus(props) {
     return (
         <Row className="vh-100 m-0" style={{backgroundColor: timer.color}}>
             <Nav pomodoro={pomodoro} shortBreak={shortBreak} longBreak={longBreak} resetTimers={resetTimers} />
-            //TODO: Reset modal
+            {/*TODO: Reset modal*/}
             {/*{alertResetTimer.state ? <ResetModal alertResetTimer={alertResetTimer} setAlertResetTimer={setAlertResetTimer}></ResetModal> : <></>}*/}
             <Col className="m-auto text-center">
                 <Container className="py-5 focus-card">
@@ -133,7 +141,7 @@ function Focus(props) {
                     </Container>
                     <Container className="timer d-flex justify-content-center">
                         {composeTimer()}
-                        <Button className='badge-btn mt-4 mb-auto' onClick={showModal}><Badge className="mt-5">{Math.floor((counter)/2)}</Badge></Button>
+                        <Button className='badge-btn mt-4 mb-auto' onClick={showModal}><Badge className="mt-5">{pomoCounter}</Badge></Button>
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
