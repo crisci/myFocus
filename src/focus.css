@@ -5,7 +5,6 @@
 .mybutton {
   background-color: transparent;
   border: none;
-  width: 20%;
 }
 
 
@@ -13,8 +12,8 @@
 .focus-card {
   background-color: rgba(236, 233, 233, 0.103);
   border-radius: 2rem;
-  width: 40%;
   height: 380px;
+  width: 40%;
 }
 
 .btn-check   {
@@ -22,6 +21,7 @@
   border-color: transparent;
   font-weight: 400;
   max-width: 50%;
+
 }
 
 .start-btn {
@@ -29,6 +29,8 @@
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
+  max-width: 25%;
+  min-width: 25%;
 }
 
 .btn.btn-primary:hover {
@@ -116,4 +118,38 @@
   margin: auto;
   transform: translateY(8px);
 }
+
+@media screen and (max-width: 1100px) {
+
+  .focus-card {
+    background-color: rgba(236, 233, 233, 0.103);
+    border-radius: 2rem;
+    height: 380px;
+    width: 70%;
+  }
+  
+}
+
+@media screen and (max-width: 840px) {
+
+  .focus-card {
+    background-color: rgba(236, 233, 233, 0.103);
+    border-radius: 2rem;
+    height: 380px;
+    width: 70%;
+  }
+  
+}
+
+@media screen and (max-width: 660px) {
+
+  .focus-card {
+    background-color: rgba(236, 233, 233, 0.103);
+    border-radius: 2rem;
+    height: 380px;
+    width: 100%;
+  }
+  
+}
+
 
