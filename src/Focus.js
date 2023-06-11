@@ -2,7 +2,8 @@ import "./focus.css";
 import { Badge, Col, Container, Row, ToggleButton, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
-import ResetModal from "./ResetModal";
+import { useRef } from "react";
+import song from "./audio/level_up.mp3";
 
 let root = document.documentElement;
 
@@ -17,6 +18,8 @@ function Focus(props) {
     const [timerInterval, setTimerInterval] = useState();
     const [alertResetTimer, setAlertResetTimer] = useState({state: false, choise: false});
     const [pomoCounter, setPomoCounter] = useState(0);
+
+    const audio = new Audio(song);
 
     useEffect(() => {
         setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
@@ -66,6 +69,7 @@ function Focus(props) {
     }
 
     function switchTimer() {
+        if(pomoCounter != 0) audio.play();
         if (counter % 2 === 1) {
             setTimer({color: "#DF5353", timer: pomodoro * 60, type: "pomodoro"});
             root.style.setProperty('--background-color', "#DF5353");
