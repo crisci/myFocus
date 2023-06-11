@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/myfocus/static/css/main.6adbb70a.css",
-    "main.js": "/myfocus/static/js/main.161f91fd.js",
+    "main.js": "/myfocus/static/js/main.36cd4600.js",
     "static/js/787.0e9a0273.chunk.js": "/myfocus/static/js/787.0e9a0273.chunk.js",
+    "static/media/level_up.mp3": "/myfocus/static/media/level_up.ab92bc3be2dac603b39b.mp3",
     "index.html": "/myfocus/index.html",
     "main.6adbb70a.css.map": "/myfocus/static/css/main.6adbb70a.css.map",
-    "main.161f91fd.js.map": "/myfocus/static/js/main.161f91fd.js.map",
+    "main.36cd4600.js.map": "/myfocus/static/js/main.36cd4600.js.map",
     "787.0e9a0273.chunk.js.map": "/myfocus/static/js/787.0e9a0273.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6adbb70a.css",
-    "static/js/main.161f91fd.js"
+    "static/js/main.36cd4600.js"
   ]
 }
