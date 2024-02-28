@@ -1,9 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './firebaseConfig.js'
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Focus from './Focus';
+import { getFirestore } from 'firebase/firestore';
+
+
 
 function App() {
+
   return (
     <Router>
       <MainApp/>  
@@ -12,9 +17,12 @@ function App() {
 }
 
 function MainApp() {
+
+  const db = getFirestore();
+
   return(
     <Routes>
-        <Route path='/' element={<Focus/>}/>
+        <Route path='/' element={<Focus db={db}/>}/>
     </Routes>
   );
 }

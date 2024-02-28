@@ -3,6 +3,8 @@ import { Badge, Col, Container, Row, ToggleButton, Button } from "react-bootstra
 import { useEffect, useState } from "react";
 import Nav from "./Navbar";
 import song from "./audio/level_up.mp3";
+import "./firebaseConfig.js"
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 let root = document.documentElement;
 
@@ -17,6 +19,8 @@ function Focus(props) {
     const [timerInterval, setTimerInterval] = useState();
     const [alertResetTimer, setAlertResetTimer] = useState({state: false, choise: false});
     const [pomoCounter, setPomoCounter] = useState(0);
+
+    const db = getFirestore();
 
     const audio = new Audio(song);
 
@@ -60,6 +64,15 @@ function Focus(props) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [counter]);
+
+    const getData = async () => {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        const tempArray = [];
+        querySnapshot.forEach((doc) => {
+            tempArray.push(doc.data());
+        });
+        console.log(tempArray);
+    }
 
     function resetTimers(newPomodoro, newShortBreak, newLongBreak) {
         setPomodoro(newPomodoro);
@@ -148,8 +161,9 @@ function Focus(props) {
                     </Container>
                     <Container  className={`start-btn ${status ? "stop" : "start"}`} onClick={startOrStop}>{status ? "Stop" : "Start"}</Container>
                 </Container>
+                <Button onClick={() => {getData()}}>Test</Button>
             </Col>
-        </Row>
+        </Row> 
     );
 }
 
