@@ -9,6 +9,7 @@ pipeline {
                 sh '''
                     ls
                     pwd
+                    node -v
                 '''
                 
             }
