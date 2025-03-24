@@ -1,22 +1,11 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs('22.14.0')
+    }
     
     stages {
-        stage('Install Node.js') {
-            steps {
-                script {
-                    // Install Node.js using NodeSource
-                    sh '''
-                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-                        export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-                        // Download and install Node.js:
-                        nvm install 22
-                    '''
-                }
-            }
-        }
-        
         stage('build') {
             steps {
                 sh '''
