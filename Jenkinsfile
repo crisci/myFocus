@@ -29,7 +29,15 @@ pipeline {
                 '''
             }
         }
-
+        
+        stage('SCA Analysis') {
+            steps {
+                sh'''
+                    ls
+                    cd myFocus
+                '''
+            }
+        }
 
     }
 }
