@@ -18,24 +18,25 @@ pipeline {
             }
         }
 
-        stage('Trivy') {
+        stage('Installing Trivy') {
             steps {
                sh'''
                     echo "Installing Trivy"
                     mkdir -p $HOME/bin
                     curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/bin
                     chmod +x $HOME/bin/trivy
-                    $HOME/bin/trivy --help
+                    $HOME/bin/trivy --version
+
+                    echo "Downloading Trivy HTML template..."
+                    curl -sfL -o $TEMPLATE_PATH https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl
                 '''
             }
         }
-        
+
         stage('SCA Analysis') {
             steps {
                 sh'''
                     $HOME/bin/trivy fs --scanners vuln,secret,config,license --format template --template "$TEMPLATE_PATH" -o trivy-report.html ./
-                    ls $HOME/bin/
-                    find / | grep tpl
                 '''
             }
         }
