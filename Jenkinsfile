@@ -3,18 +3,28 @@ pipeline {
 
     tools {
         nodejs('22.14.0')
+        docker('docker:latest')
     }
+
     
     stages {
-        stage('build') {
+        stage('Setup') {
             steps {
                 sh '''
-                    ls
-                    pwd
                     node -v
+                    docker -v
                 '''
                 
             }
         }
+
+        stage('Trivy') {
+            steps {
+                sh'''
+                    echo "Running Trivy..."
+                '''
+            }
+        }
+
     }
 }
