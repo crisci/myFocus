@@ -33,8 +33,7 @@ pipeline {
         stage('SCA Analysis') {
             steps {
                 sh'''
-                    ls
-                    cd myFocus
+                    $HOME/bin/trivy fs --scanners vuln,secret,config,license --format template --template "@contrib/html.tpl" -o trivy-report.html .
                 '''
             }
         }
