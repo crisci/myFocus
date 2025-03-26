@@ -22,10 +22,14 @@ pipeline {
             steps {
                sh'''
                     echo "Installing Trivy"
-                    which wget
+                    mkdir -p $HOME/bin
+                    curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/bin
+                    chmod +x $HOME/bin/trivy
+                    $HOME/bin/trivy --version
                 '''
             }
         }
+
 
     }
 }
