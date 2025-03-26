@@ -6,6 +6,11 @@ pipeline {
         dockerTool 'latest'
     }
 
+    environment {
+        TRIVY_PATH = "$HOME/bin/trivy"
+        TEMPLATE_PATH = "$HOME/trivy-html.tpl"
+    }
+
     
     stages {
         stage('Setup') {
@@ -28,7 +33,7 @@ pipeline {
                     $HOME/bin/trivy --version
 
                     echo "Downloading Trivy HTML template..."
-                    curl -sfL -o $TEMPLATE_PATH https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl
+                    curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl -o $TEMPLATE_PATH
                 '''
             }
         }
@@ -36,7 +41,7 @@ pipeline {
         stage('SCA Analysis') {
             steps {
                 sh'''
-                    $HOME/bin/trivy fs --scanners vuln,secret,config,license --format template --template "$TEMPLATE_PATH" -o trivy-report.html ./
+                    $HOME/bin/trivy fs --scanners vuln,secret,config,license --format template --template @"$TEMPLATE_PATH" -o trivy-report.html ./
                 '''
             }
         }
