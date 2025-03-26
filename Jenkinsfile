@@ -34,9 +34,8 @@ pipeline {
             steps {
                 sh'''
                     $HOME/bin/trivy fs --scanners vuln,secret,config,license --format template --template "$TEMPLATE_PATH" -o trivy-report.html ./
-                    ls $HOME/bin/trivy
-                    cd $HOME/bin/trivy
-                    find . | grep tpl
+                    ls $HOME/bin/
+                    find / | grep tpl
                 '''
             }
         }
