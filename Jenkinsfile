@@ -3,7 +3,6 @@ pipeline {
 
     tools {
         nodejs('22.14.0')
-        docker('docker:latest')
     }
 
     
