@@ -11,8 +11,9 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
+                    echo "Checking Node.js and Docker versions..."
                     node -v
-                    docker -v
+                    docker --version
                 '''
                 
             }
